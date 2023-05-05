@@ -12,31 +12,46 @@ const Greeting = ({ text }) => {
   return <p>{text}</p>;
 }
 
-function App() {
+const App = () => {
+
+  function handleClick() {
+    console.log('Button Click');
+  }
+
+  const stories = [
+    {
+      title: 'React',
+      url: 'https://reactjs.org',
+      author: 'Jordan Walke',
+      num_comments: 3,
+      points: 4,
+      objectID: 0,
+      releaseYear: 2001,
+      ISBN: 544321,
+
+    },
+    {
+      title: 'Redux',
+      url: 'https://reactjs.org',
+      author: 'Dan Abramov, Andrew Clark',
+      num_comments: 2,
+      points: 5,
+      objectID: 1,
+      releaseYear: 2010,
+      ISBN: 123456
+    },
+  ];
   return (
     <div>
+
+      <button type='button' onClick={handleClick}>Event handler</button>
+
       <Greeting text="Hello 1 av instansen greeting" />
       <Greeting text="Hello 1 av instansen greeting" />
       <h1>{welcome.greeting} {welcome.title}</h1>
 
       <Search />
-      <List />
-      {/*  <ul>
-        {list.map(function (item) {
-          return (
-            <li key={item.objectID}>
-              <span>
-                <a href={item.url}> {item.title}</a>
-              </span>
-              <span> {item.author}</span>
-              <span> {item.num_comments}</span>
-              <span> {item.points} </span>
-              <span>{item.null}</span>
-
-            </li>
-          );
-        })}
-      </ul> */}
+      <List list={stories} />
     </div>
   );
 }
